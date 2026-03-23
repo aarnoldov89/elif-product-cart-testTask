@@ -1,0 +1,171 @@
+{
+  "shops": [
+    {
+      "id": 1,
+      "name": "Fresh Market",
+      "type": "grocery",
+      "image": "/images/fresh-market.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Fruit Paradise",
+      "type": "fruits",
+      "image": "/images/fruit-paradise.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Pizza Palace",
+      "type": "pizza",
+      "image": "/images/pizza-palace.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Burger House",
+      "type": "burgers",
+      "image": "/images/burger-house.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Drink Station",
+      "type": "drinks",
+      "image": "/images/drink-station.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Fresh Tomatoes",
+      "description": "Ripe, juicy tomatoes perfect for salads and cooking",
+      "price": 3.99,
+      "image": "/images/tomatoes.jpg",
+      "shopId": 1,
+      "category": "vegetables"
+    },
+    {
+      "id": 2,
+      "name": "Organic Carrots",
+      "description": "Sweet and crunchy organic carrots, great for snacking",
+      "price": 2.49,
+      "image": "/images/carrots.jpg",
+      "shopId": 1,
+      "category": "vegetables"
+    },
+    {
+      "id": 3,
+      "name": "Bell Peppers",
+      "description": "Colorful bell peppers, rich in vitamins and flavor",
+      "price": 4.99,
+      "image": "/images/bell-peppers.jpg",
+      "shopId": 1,
+      "category": "vegetables"
+    },
+    {
+      "id": 4,
+      "name": "Fresh Apples",
+      "description": "Crisp and sweet apples, perfect for snacking",
+      "price": 3.99,
+      "image": "/images/apples.jpg",
+      "shopId": 2,
+      "category": "fruits"
+    },
+    {
+      "id": 5,
+      "name": "Bananas",
+      "description": "Ripe bananas packed with potassium and energy",
+      "price": 2.99,
+      "image": "/images/bananas.jpg",
+      "shopId": 2,
+      "category": "fruits"
+    },
+    {
+      "id": 6,
+      "name": "Orange Juice",
+      "description": "Fresh squeezed orange juice, rich in vitamin C",
+      "price": 5.99,
+      "image": "/images/orange-juice.jpg",
+      "shopId": 2,
+      "category": "fruits"
+    },
+    {
+      "id": 7,
+      "name": "Margherita Pizza",
+      "description": "Classic pizza with tomato sauce, mozzarella, and fresh basil",
+      "price": 14.99,
+      "image": "/images/margherita-pizza.jpg",
+      "shopId": 3,
+      "category": "pizza"
+    },
+    {
+      "id": 8,
+      "name": "Pepperoni Pizza",
+      "description": "Delicious pizza topped with pepperoni and cheese",
+      "price": 16.99,
+      "image": "/images/pepperoni-pizza.jpg",
+      "shopId": 3,
+      "category": "pizza"
+    },
+    {
+      "id": 9,
+      "name": "Veggie Supreme Pizza",
+      "description": "Loaded with fresh vegetables and cheese",
+      "price": 17.99,
+      "image": "/images/veggie-pizza.jpg",
+      "shopId": 3,
+      "category": "pizza"
+    },
+    {
+      "id": 10,
+      "name": "Classic Beef Burger",
+      "description": "Juicy beef patty with lettuce, tomato, and cheese",
+      "price": 12.99,
+      "image": "/images/beef-burger.jpg",
+      "shopId": 4,
+      "category": "burgers"
+    },
+    {
+      "id": 11,
+      "name": "Chicken Burger",
+      "description": "Grilled chicken breast with fresh vegetables",
+      "price": 11.99,
+      "image": "/images/chicken-burger.jpg",
+      "shopId": 4,
+      "category": "burgers"
+    },
+    {
+      "id": 12,
+      "name": "Veggie Burger",
+      "description": "Plant-based patty with fresh toppings",
+      "price": 10.99,
+      "image": "/images/veggie-burger.jpg",
+      "shopId": 4,
+      "category": "burgers"
+    },
+    {
+      "id": 13,
+      "name": "Coca Cola",
+      "description": "Classic refreshing cola drink",
+      "price": 2.99,
+      "image": "/images/coca-cola.jpg",
+      "shopId": 5,
+      "category": "drinks"
+    },
+    {
+      "id": 14,
+      "name": "Fresh Lemonade",
+      "description": "Homemade lemonade with real lemons",
+      "price": 3.99,
+      "image": "/images/lemonade.jpg",
+      "shopId": 5,
+      "category": "drinks"
+    },
+    {
+      "id": 15,
+      "name": "Iced Coffee",
+      "description": "Cold brew coffee served over ice",
+      "price": 4.99,
+      "image": "/images/iced-coffee.jpg",
+      "shopId": 5,
+      "category": "drinks"
+    }
+  ]
+}

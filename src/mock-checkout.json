@@ -1,0 +1,4 @@
+{
+  "orders": [],
+  "_note": "This is a mock file for development. Real orders are stored in browser localStorage and can be viewed in browser console using: JSON.parse(localStorage.getItem('orders') || '[]')"
+}
