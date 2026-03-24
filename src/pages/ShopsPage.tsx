@@ -55,7 +55,7 @@ const ShopsPage: React.FC = () => {
   };
 
   return (
-    <div className="flex container mx-auto px-4">
+    <div className="flex container flex-col md:flex-row md:mx-auto md:px-4">
       <ShopsSidebar
         shops={filteredShops}
         selectedShop={selectedShop}
@@ -63,7 +63,7 @@ const ShopsPage: React.FC = () => {
         ratingFilter={ratingFilter}
         onRatingFilterChange={setRatingFilter}
       />
-      <div className="flex-1 p-6">
+      <div className="flex-1 p-6 md:pr-0">
         {selectedShop ? (
           <Products
             selectedShop={selectedShop}
