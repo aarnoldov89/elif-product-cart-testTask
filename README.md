@@ -1,16 +1,18 @@
-## Elif Food Delivery App - Vite + Express.js
+**Elif Food Delivery App - Vite + Express.js**
 
-## General deployed link to application, deployed on Vercel
-## Left console.logs, that DB connection could be checked by reviewers
+**General deployed link to application, deployed on Vercel**
+**Left console.logs, that DB connection could be checked by reviewers**
 
-## Gained level: Middle Level
+**Gained level: Middle Level**
 
 https://elif-product-cart-test-task.vercel.app/
 
 ## DB check
 
 https://elif-product-cart-test-task.vercel.app/api/health
+
 https://elif-product-cart-test-task.vercel.app/api/products
+
 https://elif-product-cart-test-task.vercel.app/api/orders
 
 A full-stack food delivery application built with **Vite**, **React**, **TypeScript**, **Express.js**, and **MongoDB** with localStorage fallbacks.
