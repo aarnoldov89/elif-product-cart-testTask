@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const { totalItems } = useCart();
 
   return (
-    <nav className="bg-green-600 text-white shadow-lg">
+    <nav className="bg-green-600 text-white shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="text-xl font-bold">

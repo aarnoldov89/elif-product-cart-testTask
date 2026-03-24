@@ -134,7 +134,7 @@ const ShopsSidebar: React.FC<ShopsSidebarProps> = ({
       </div>
 
       {/* Desktop sidebar */}
-      <div className="hidden md:block w-64 bg-white shadow-lg h-[calc(100vh-4rem)] overflow-y-auto shrink-0">
+      <div className="hidden md:block w-64 bg-white shadow-lg shrink-0 sticky top-16 self-start max-h-[calc(100vh-4rem)] overflow-y-auto">
         <div className="p-4">
           <h2 className="text-lg font-semibold text-gray-800 mb-3">Shops</h2>
           {filterAndList}
