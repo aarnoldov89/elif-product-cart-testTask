@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import ShopsSidebar from '../components/ShopsSidebar';
+import ShopsSidebar, { RatingFilter } from '../components/ShopsSidebar';
 import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
 import { Shop, Product } from '../types';
 import apiService from '../services/apiService';
+
+type SortOrder = 'price-asc' | 'price-desc' | 'name-asc';
 
 const ShopsPage: React.FC = () => {
   const [shops, setShops] = useState<Shop[]>([]);
@@ -12,6 +14,8 @@ const ShopsPage: React.FC = () => {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState<SortOrder>('name-asc');
+  const [ratingFilter, setRatingFilter] = useState<RatingFilter>('all');
 
   useEffect(() => {
     const loadShops = async () => {
@@ -38,6 +42,26 @@ const ShopsPage: React.FC = () => {
     }
   }, [selectedShop, allProducts]);
 
+  const filteredShops = shops.filter((shop) => {
+    if (ratingFilter === 'all') return true;
+    if (ratingFilter === '4-5') return shop.rating >= 4.0 && shop.rating <= 5.0;
+    if (ratingFilter === '3-4') return shop.rating >= 3.0 && shop.rating < 4.0;
+    if (ratingFilter === '2-3') return shop.rating >= 2.0 && shop.rating < 3.0;
+    return true;
+  });
+
+  useEffect(() => {
+    if (selectedShop && !filteredShops.find((s) => s.id === selectedShop.id)) {
+      setSelectedShop(null);
+    }
+  }, [ratingFilter]);
+
+  const sortedProducts = [...products].sort((a, b) => {
+    if (sortOrder === 'price-asc') return a.price - b.price;
+    if (sortOrder === 'price-desc') return b.price - a.price;
+    return a.name.localeCompare(b.name);
+  });
+
   const handleShopSelect = (shop: Shop) => {
     setSelectedShop(shop);
   };
@@ -54,22 +78,41 @@ const ShopsPage: React.FC = () => {
 
   return (
     <div className="flex container mx-auto px-4">
-      <ShopsSidebar 
-        shops={shops}
+      <ShopsSidebar
+        shops={filteredShops}
         selectedShop={selectedShop}
         onShopSelect={handleShopSelect}
+        ratingFilter={ratingFilter}
+        onRatingFilterChange={setRatingFilter}
       />
       <div className="flex-1 p-6">
         {selectedShop ? (
           <>
-            <div className="mb-6">
-              <h1 className="text-2xl font-bold text-gray-800">{selectedShop.name}</h1>
-              <p className="text-gray-600 capitalize">
-                {selectedShop.type} • {products.length} items available
-              </p>
+            <div className="mb-6 flex items-start justify-between gap-4">
+              <div>
+                <h1 className="text-2xl font-bold text-gray-800">{selectedShop.name}</h1>
+                <p className="text-gray-600 capitalize">
+                  {selectedShop.type} • {products.length} items available
+                </p>
+              </div>
+              <div className="flex items-center gap-2 shrink-0">
+                <label htmlFor="sort-select" className="text-sm font-medium text-gray-600 whitespace-nowrap">
+                  Sort by:
+                </label>
+                <select
+                  id="sort-select"
+                  value={sortOrder}
+                  onChange={(e) => setSortOrder(e.target.value as SortOrder)}
+                  className="border border-gray-300 rounded-md px-3 py-1.5 text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer"
+                >
+                  <option value="name-asc">Name (A → Z)</option>
+                  <option value="price-asc">Price (Low → High)</option>
+                  <option value="price-desc">Price (High → Low)</option>
+                </select>
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {products.map((product) => (
+              {sortedProducts.map((product) => (
                 <ProductCard key={product.id} product={product} onView={() => handleViewProduct(product)} />
               ))}
             </div>

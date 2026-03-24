@@ -4,31 +4,36 @@
       "id": 1,
       "name": "Fresh Market",
       "type": "grocery",
-      "image": "/images/fresh-market.jpg"
+      "image": "/images/fresh-market.jpg",
+      "rating": 4.5
     },
     {
       "id": 2,
       "name": "Fruit Paradise",
       "type": "fruits",
-      "image": "/images/fruit-paradise.jpg"
+      "image": "/images/fruit-paradise.jpg",
+      "rating": 3.8
     },
     {
       "id": 3,
       "name": "Pizza Palace",
       "type": "pizza",
-      "image": "/images/pizza-palace.jpg"
+      "image": "/images/pizza-palace.jpg",
+      "rating": 4.9
     },
     {
       "id": 4,
       "name": "Burger House",
       "type": "burgers",
-      "image": "/images/burger-house.jpg"
+      "image": "/images/burger-house.jpg",
+      "rating": 3.2
     },
     {
       "id": 5,
       "name": "Drink Station",
       "type": "drinks",
-      "image": "/images/drink-station.jpg"
+      "image": "/images/drink-station.jpg",
+      "rating": 2.7
     }
   ],
   "products": [

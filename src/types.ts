@@ -3,6 +3,7 @@ export interface Shop {
   name: string;
   type: string;
   image: string;
+  rating: number;
 }
 
 export interface Product {

@@ -11,20 +11,32 @@ if (!process.env.MONGODB_URI) {
 
 const mockData = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'src', 'mock-data.json')));
 
+// Flags: --shops  → seed only shops
+//        --products → seed only products
+//        (no flag)  → seed everything
+const args = process.argv.slice(2);
+const onlyShops    = args.includes('--shops');
+const onlyProducts = args.includes('--products');
+const seedShops    = !onlyProducts; // seed shops unless --products only
+const seedProducts = !onlyShops;   // seed products unless --shops only
+
 async function seed() {
   const client = new MongoClient(process.env.MONGODB_URI);
   try {
     await client.connect();
     const db = client.db('elif_food_delivery');
 
-    // Clear and re-seed so the script is safe to run multiple times
-    await db.collection('shops').deleteMany({});
-    await db.collection('shops').insertMany(mockData.shops);
-    console.log(`✅ Seeded ${mockData.shops.length} shops`);
+    if (seedShops) {
+      await db.collection('shops').deleteMany({});
+      await db.collection('shops').insertMany(mockData.shops);
+      console.log(`✅ Seeded ${mockData.shops.length} shops`);
+    }
 
-    await db.collection('products').deleteMany({});
-    await db.collection('products').insertMany(mockData.products);
-    console.log(`✅ Seeded ${mockData.products.length} products`);
+    if (seedProducts) {
+      await db.collection('products').deleteMany({});
+      await db.collection('products').insertMany(mockData.products);
+      console.log(`✅ Seeded ${mockData.products.length} products`);
+    }
 
     console.log('🎉 Database seeded successfully!');
   } catch (error) {

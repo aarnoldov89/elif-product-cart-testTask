@@ -1,5 +1,15 @@
 # Elif Food Delivery App - Vite + Express.js
 
+# General deployed link to application, deployed on Vercel
+# Left console.logs, that DB connection could be checked by reviewers
+# *
+https://elif-product-cart-test-task.vercel.app/
+
+# DB check
+# *
+https://elif-product-cart-test-task.vercel.app/api/health
+https://elif-product-cart-test-task.vercel.app/api/products
+
 A full-stack food delivery application built with **Vite**, **React**, **TypeScript**, **Express.js**, and **MongoDB** with localStorage fallbacks.
 
 ## 🚀 Architecture
@@ -68,7 +78,7 @@ A full-stack food delivery application built with **Vite**, **React**, **TypeScr
    
    **Terminal 1 - Backend:**
    ```bash
-   npm run backend:dev
+   npm run server
    ```
    
    **Terminal 2 - Frontend:**
@@ -83,6 +93,7 @@ A full-stack food delivery application built with **Vite**, **React**, **TypeScr
 
 - `GET /api/health` - Server health check
 - `GET /api/products` - Get all products (MongoDB → fallback to mock)
+- `GET /api/shops` - Get all shops (MongoDB → fallback to mock)
 - `POST /api/orders` - Create new order (MongoDB → fallback to localStorage)
 - `GET /api/orders` - Get all orders (MongoDB only)
 
@@ -98,16 +109,16 @@ The app gracefully handles API/backend failures:
 
 ```bash
 # Frontend development
-npm run dev              # Start Vite dev server
+npm run dev             # Start Vite dev server
 npm run build           # Build for production
 npm run preview         # Preview production build
 
 # Backend development  
-npm run backend         # Start Express server
-npm run backend:dev     # Start with nodemon (auto-reload)
+npm run server          # Start Express server
 
-# Full development (run both)
-npm run dev & npm run backend:dev
+# Full development (run in separate terminals)
+npm run dev
+npm run server
 ```
 
 ---
