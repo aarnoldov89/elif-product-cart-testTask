@@ -186,11 +186,6 @@ const CheckoutPage: React.FC = () => {
             <hr className="my-4" />
             
             <div className="space-y-2">
-              <div className="flex justify-between">
-                <span>Subtotal ({totalItems} items)</span>
-                <span>${totalAmount.toFixed(2)}</span>
-              </div>
-              <hr className="my-2" />
               <div className="flex justify-between text-xl font-bold">
                 <span>Total</span>
                 <span>${totalAmount.toFixed(2)}</span>
