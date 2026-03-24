@@ -4,26 +4,27 @@ import ProductCard from '../components/ProductCard';
 import ProductModal from '../components/ProductModal';
 import { Shop, Product } from '../types';
 import apiService from '../services/apiService';
-import mockData from '../mock-data.json';
 
 const ShopsPage: React.FC = () => {
+  const [shops, setShops] = useState<Shop[]>([]);
   const [selectedShop, setSelectedShop] = useState<Shop | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const shops: Shop[] = mockData.shops;
+  useEffect(() => {
+    const loadShops = async () => {
+      const data = await apiService.getShops();
+      setShops(data);
+    };
+    loadShops();
+  }, []);
 
   useEffect(() => {
     const loadProducts = async () => {
-      try {
-        const data = await apiService.getProducts();
-        setAllProducts(data);
-      } catch (error) {
-        console.log('⚠️ Using mock products fallback');
-        setAllProducts(mockData.products as Product[]);
-      }
+      const data = await apiService.getProducts();
+      setAllProducts(data);
     };
     loadProducts();
   }, []);

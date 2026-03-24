@@ -53,6 +53,35 @@ const readMockData = (filename) => {
 
 // API Routes
 
+// Get shops
+app.get('/api/shops', async (req, res) => {
+  try {
+    if (db) {
+      const shops = await db.collection('shops').find({}).toArray();
+      if (shops.length > 0) {
+        console.log('✅ Shops loaded from MongoDB');
+        return res.json({ shops, source: 'mongodb' });
+      }
+    }
+
+    // Fallback to mock data
+    console.log('⚠️  No shops in MongoDB, using mock data');
+    const mockData = readMockData('mock-data.json');
+    if (mockData && mockData.shops) {
+      return res.json({ shops: mockData.shops, source: 'mock' });
+    }
+
+    return res.status(500).json({ error: 'No shops available' });
+  } catch (error) {
+    console.log('⚠️  Error fetching shops:', error.message);
+    const mockData = readMockData('mock-data.json');
+    if (mockData && mockData.shops) {
+      return res.json({ shops: mockData.shops, source: 'mock' });
+    }
+    res.status(500).json({ error: 'Failed to fetch shops' });
+  }
+});
+
 // Get products
 app.get('/api/products', async (req, res) => {
   try {

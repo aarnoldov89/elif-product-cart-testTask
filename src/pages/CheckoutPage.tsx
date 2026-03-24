@@ -113,9 +113,7 @@ const CheckoutPage: React.FC = () => {
         })),
         summary: {
           totalItems,
-          totalAmount,
-          subtotal: totalAmount,
-          grandTotal: totalAmount
+          totalAmount
         },
         orderDate: new Date().toISOString(),
         status: 'pending'
@@ -142,7 +140,7 @@ const CheckoutPage: React.FC = () => {
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6">
             <div className="text-6xl mb-4">✅</div>
             <h2 className="text-2xl font-bold mb-2">Order Confirmed!</h2>
-            <p className="text-lg">Thank you for your order. We'll contact you soon with delivery details.</p>
+            <p className="text-lg">Thank you for your order.</p>
           </div>
           <Link
             to="/"
