@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { getOrdersFromStorage, debugOrders } from '../utils/orderUtils';
+import apiService from '../services/apiService';
 
 interface FormData {
   name: string;
@@ -77,38 +77,12 @@ const CheckoutPage: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const saveOrderToMockFile = async (orderData: any) => {
+  const submitOrderToAPI = async (orderData: any) => {
     try {
-      // Get existing orders from localStorage
-      const existingOrders = getOrdersFromStorage();
-      
-      // Add new order
-      existingOrders.push(orderData);
-      
-      // Save back to localStorage
-      localStorage.setItem('orders', JSON.stringify(existingOrders));
-      
-      // Generate the exact JSON for mock-checkout.json
-      const mockCheckoutJson = {
-        orders: existingOrders
-      };
-      
-      console.log('✅ Order saved to localStorage!');
-      console.log('📋 Copy this JSON to src/mock-checkout.json:');
-      console.log('='.repeat(50));
-      console.log(JSON.stringify(mockCheckoutJson, null, 2));
-      console.log('='.repeat(50));
-      console.log('📦 New order details:', orderData);
-      
-      // Debug function to view all orders
-      debugOrders();
-      
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      return { success: true, orderId: orderData.id };
+      const result = await apiService.submitOrder(orderData);
+      return result;
     } catch (error) {
-      console.error('❌ Error saving order:', error);
+      console.error('❌ Error submitting order:', error);
       throw error;
     }
   };
@@ -147,7 +121,7 @@ const CheckoutPage: React.FC = () => {
         status: 'pending'
       };
 
-      const result = await saveOrderToMockFile(orderData);
+      const result = await submitOrderToAPI(orderData);
       
       if (result.success) {
         setOrderSubmitted(true);

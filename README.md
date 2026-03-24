@@ -1,32 +1,118 @@
-# Elif Food Delivery App
+# Elif Food Delivery App - Vite + Express.js
 
-A modern food delivery application built with React, TypeScript, Vite, React Router, and Tailwind CSS.
+A full-stack food delivery application built with **Vite**, **React**, **TypeScript**, **Express.js**, and **MongoDB** with localStorage fallbacks.
 
-## Features
+## 🚀 Architecture
 
-- **Shop Selection**: Browse different food shops including Fresh Market, Fruit Paradise, Pizza Palace, Burger House, and Drink Station
-- **Product Catalog**: View products organized by shop with detailed descriptions and pricing
-- **Shopping Cart**: Add items to cart, adjust quantities, and manage your order
-- **Responsive Design**: Built with Tailwind CSS for a modern, mobile-friendly interface
-- **Type Safety**: Full TypeScript support for enhanced development experience
+**Frontend (Vite + React):**
+- Vite development server on `http://localhost:5173`
+- React 18 with TypeScript
+- Tailwind CSS for styling
+- React Router for navigation
 
-## Tech Stack
+**Backend (Express.js API):**
+- Express server on `http://localhost:5000`
+- MongoDB integration with fallbacks
+- RESTful API endpoints
+- CORS enabled for development
 
-- **React 18** - Modern React with hooks and context
-- **TypeScript** - Type-safe JavaScript
-- **Vite** - Fast build tool and development server
-- **React Router** - Client-side routing
-- **Tailwind CSS** - Utility-first CSS framework
+## 🛠️ Technologies Used
 
-## Quick Start
+- **Frontend**: Vite, React 18, TypeScript, Tailwind CSS, React Router
+- **Backend**: Express.js, MongoDB, Node.js
+- **Database**: MongoDB Atlas (with localStorage fallback)
+- **Development**: Nodemon for backend hot reload
 
-To run the app, simply use:
+## 📦 Getting Started
+
+### Prerequisites
+- Node.js 18+ installed
+- MongoDB Atlas account (optional, app works with fallbacks)
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/aarnoldov89/elif-product-cart-testTask.git
+   cd elif-product-cart-testTask
+   ```
+
+2. **Install frontend dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Install backend dependencies**
+   ```bash
+   cd backend
+   npm install
+   cd ..
+   ```
+
+4. **Set up environment variables**
+   
+   **Frontend (.env.local):**
+   ```env
+   VITE_API_URL=http://localhost:5000/api
+   ```
+   
+   **Backend (backend/.env):**
+   ```env
+   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/elif_food_delivery
+   PORT=5000
+   NODE_ENV=development
+   ```
+
+5. **Start the development servers**
+   
+   **Terminal 1 - Backend:**
+   ```bash
+   npm run backend:dev
+   ```
+   
+   **Terminal 2 - Frontend:**
+   ```bash
+   npm run dev
+   ```
+
+6. **Open your browser**
+   Visit [http://localhost:5173](http://localhost:5173)
+
+## 🔧 API Endpoints
+
+- `GET /api/health` - Server health check
+- `GET /api/products` - Get all products (MongoDB → fallback to mock)
+- `POST /api/orders` - Create new order (MongoDB → fallback to localStorage)
+- `GET /api/orders` - Get all orders (MongoDB only)
+
+## 🎯 Fallback Strategy
+
+The app gracefully handles API/backend failures:
+
+1. **Products**: API → mock-data.json
+2. **Orders**: API → localStorage → console output
+3. **Development**: Clear error messages and fallback indicators
+
+## 🚦 Development Commands
 
 ```bash
-npm start
+# Frontend development
+npm run dev              # Start Vite dev server
+npm run build           # Build for production
+npm run preview         # Preview production build
+
+# Backend development  
+npm run backend         # Start Express server
+npm run backend:dev     # Start with nodemon (auto-reload)
+
+# Full development (run both)
+npm run dev & npm run backend:dev
 ```
 
-This command will start the development server and open the app at [http://localhost:5173](http://localhost:5173).
+---
+
+**Repository**: https://github.com/aarnoldov89/elif-product-cart-testTask
 
 ## Available Scripts
 
