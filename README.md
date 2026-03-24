@@ -1,6 +1,7 @@
 **Elif Food Delivery App - Vite + Express.js**
 
 **General deployed link to application, deployed on Vercel**
+
 **Left console.logs, that DB connection could be checked by reviewers**
 
 **Gained level: Middle Level**
