@@ -3,6 +3,8 @@
 # General deployed link to application, deployed on Vercel
 # Left console.logs, that DB connection could be checked by reviewers
 # *
+# Gained level: Middle Level
+# *
 https://elif-product-cart-test-task.vercel.app/
 
 # DB check
